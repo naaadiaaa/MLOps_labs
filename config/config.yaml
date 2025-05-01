@@ -1,0 +1,24 @@
+defaults:
+  - override hydra/job_logging: disabled
+
+dataset:
+  file_name: Titanic
+  id_col: PassengerId
+  target_col: Survived
+  test_size: 0.2
+  random_state: 42
+
+paths:
+  processed_dir: data/processed
+  raw_file: data/raw/Titanic.csv
+  model_path: models/random_forest_model.pkl
+
+model:
+  type: random_forest
+  random_forest:
+    n_estimators: 100
+    max_depth: 5
+    random_state: 42
+
+logging:
+  level: INFO
