@@ -33,8 +33,8 @@ def read_and_process_data(
     df.drop(columns=['Cabin', 'Name', 'Ticket'], inplace=True)
 
     # Handle missing values
-    df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
-    df['Age'].fillna(df['Age'].mean(), inplace=True)
+    df['Embarked'] = df['Embarked'].fillna(df['Embarked'].mode()[0])
+    df['Age'] = df['Age'].fillna(df['Age'].mean())
 
     # Split data
     train_df, test_df = train_test_split(

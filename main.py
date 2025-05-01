@@ -16,5 +16,4 @@ def main(logger) -> None:
 if __name__ == "__main__":
     logger = ExecutorLogger("training")
     main(logger)
-
-#https://github.com/AyaYasser1112002/Not-Configured_MLOps.git
+ 
