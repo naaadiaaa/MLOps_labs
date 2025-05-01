@@ -1,0 +1,9 @@
+stages:
+  train_model:
+    cmd: python src/pipeline.py --config conf/config.yaml
+    deps:
+      - conf/config.yaml
+      - data/raw/train.csv
+      - src/pipeline.py
+    outs:
+      - models/random_forest_model.pkl  # Ensure this matches the model_output path
