@@ -1,0 +1,22 @@
+schema: '2.0'
+stages:
+  train_model:
+    cmd: python src/pipeline.py --config conf/config.yaml
+    deps:
+    - path: conf/config.yaml
+      hash: md5
+      md5: b2386e43a6421091f65e0124651cde8d
+      size: 503
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 2309cc5f04782ed9bb6016d9f4e381cf
+      size: 61194
+    - path: src/pipeline.py
+      hash: md5
+      md5: 7f9d8a98dbab0faff443525dcd4f0da8
+      size: 989
+    outs:
+    - path: models/random_forest_model.pkl
+      hash: md5
+      md5: 7d1e55650014e21b4568ed3e3d1fc531
+      size: 4
