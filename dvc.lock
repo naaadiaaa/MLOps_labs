@@ -5,18 +5,18 @@ stages:
     deps:
     - path: conf/config.yaml
       hash: md5
-      md5: b2386e43a6421091f65e0124651cde8d
-      size: 503
+      md5: 97a32bfcaf497a6ef598a109005b1c08
+      size: 462
     - path: data/raw/train.csv
       hash: md5
       md5: 2309cc5f04782ed9bb6016d9f4e381cf
       size: 61194
     - path: src/pipeline.py
       hash: md5
-      md5: 7f9d8a98dbab0faff443525dcd4f0da8
-      size: 989
+      md5: 1caae0261e7cbf3a1cb6776a1ddce009
+      size: 941
     outs:
     - path: models/random_forest_model.pkl
       hash: md5
-      md5: 7d1e55650014e21b4568ed3e3d1fc531
-      size: 4
+      md5: 547c73eb5a89a9c31637e8a1a910a763
+      size: 2448521
