@@ -197,3 +197,6 @@ reports/*/*.png
 reports/*/*.pdf
 reports/*/*.html
 reports/*/*.txt
+
+# MLflow logs
+mlruns/
