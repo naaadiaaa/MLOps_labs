@@ -3,9 +3,7 @@ import mlflow.sklearn
 import pandas as pd
 
 
-model_path = "models/random_forest_model.pkl"  # Modify as per your model location
-
-
+model_path = "models/random_forest_model.pkl"  
 loaded_model = mlflow.sklearn.load_model("models:/TitanicBestModel/Production")
 
 sample_data = pd.DataFrame({
