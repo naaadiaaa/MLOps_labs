@@ -1,21 +1,44 @@
-import pickle
+import os
+import joblib
 
+import litserve as ls
 import pandas as pd
-from fastapi import FastAPI  # type: ignore
-
-from src.data_loader import load_data
-from src.preprocessing import wrangle
-
-app = FastAPI()
-
-# Load your model
-with open("models/predictor.pkl", "rb") as f:
-    model = pickle.load(f)
 
 
-@app.get("/")
-async def main_page():
-    test_df = load_data("./data/raw/test.csv")
-    test_df = wrangle(test_df)
-    prediction = model.predict(test_df)
-    return {"prediction": prediction.tolist()}
+
+
+class InferenceAPI(ls.LitAPI):
+    
+    def setup(self, device="cpu"):
+        self._model  = joblib.load("models/random_forest_model.pkl")
+ 
+         
+
+    def decode_request(self, request):
+        try:
+            columns = request ["columns"]
+            rows = request ["data"]
+
+            df = pd.DataFrame(rows, columns=columns)
+            return df
+        except Exception:
+            return None
+
+    def predict(self, x):
+        print(x)
+        if x is not None:
+            return self._model.predict(x)
+        else:
+            return None
+
+    def encode_response(self, output):
+        print(output, 9 * "*")
+        if output is None:
+            message = "Error Occurred"
+        else:
+            message = "Response Produced Successfully"
+        response = {
+            "message": message,
+            "data": output.tolist(),
+        }
+        return response
